@@ -1,4 +1,4 @@
-﻿#!/usr/bin/bash
+#!/usr/bin/bash
 
 # make sure script is being run as root
 if (( $(id -u) != 0 )); then
@@ -63,8 +63,8 @@ Requires=vboxadd-service.service
 After=vboxadd-service.service
 
 [Mount]
-What=$share
-Where=$mntpoint
+What=${share}
+Where=${mntpoint}
 Type=vboxsf
 
 [Install]
@@ -72,7 +72,7 @@ WantedBy=multi-user.target
 EOF
 cat <<EOF > "$systemd_svc_file"
 [Unit]
-Description=Remounts $mntpoint with proper permissions
+Description=Remounts ${mntpoint} with proper permissions
 Requires=${u1}
 After=${u1}
 
